@@ -396,3 +396,21 @@ def setPalette(app, style):
     else:
         raise TypeError('style either be a string or QPalette')
     app.setPalette(p)
+
+
+## Performance optimization utilities for high-frequency applications
+try:
+    from . import performance
+    from .performance import (
+        TradingViewConfig, HighFrequencyConfig, QualityConfig,
+        apply_trading_config, apply_high_frequency_config, apply_quality_config
+    )
+    # Add to __all__ if it exists
+    if '__all__' in globals():
+        __all__.extend([
+            'performance', 'TradingViewConfig', 'HighFrequencyConfig', 'QualityConfig',
+            'apply_trading_config', 'apply_high_frequency_config', 'apply_quality_config'
+        ])
+except ImportError:
+    # Performance module not available, skip silently
+    pass
